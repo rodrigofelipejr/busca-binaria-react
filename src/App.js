@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import ReactDom from 'react-dom'
+// import ReactDom from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDoubleDown, faAngleDoubleUp, faThumbsUp, faLaughWink } from '@fortawesome/free-solid-svg-icons'
 
 import './App.css';
 
@@ -22,10 +24,9 @@ function App() {
   if (estado === 'ENTRADA') {
     return (
       <div className='wrapper'>
-        <a href='#' className='btn btn-default' role='button' onClick={iniciarJogo}>
+        <button onClick={iniciarJogo} className='btn btn-default'>
           <span>Começar a jogar!</span>
-          <i className="fas angle-double-down"></i>
-        </a>
+        </button>
       </div>
     )
   }
@@ -53,12 +54,11 @@ function App() {
   if (estado === 'FIM') {
     return (
       <div className='wrapper'>
-        <p>Acertei o número {palpite} com {numPalpites} chutes!</p>
+        <p>Acertei o número {palpite} com {numPalpites} chutes! <FontAwesomeIcon icon={faLaughWink}></FontAwesomeIcon> </p>
         <div className='box'>
-          <a href='#' className='btn btn-default' role='button' onClick={iniciarJogo}>
+          <button onClick={iniciarJogo} className='btn btn-default'>
             <span>Iniciar novamente?</span>
-            <i className='angle-double-down'></i>
-          </a>
+          </button>
         </div>
       </div>
     )
@@ -68,9 +68,17 @@ function App() {
     <div className="App wrapper">
       <p>O seu número é {palpite}?</p>
       <div className='box'>
-        <button onClick={menor} className='btn btn-default'>Menor</button>
-        <button onClick={acertou} className='btn btn-default'>Acertou</button>
-        <button onClick={maior} className='btn btn-default'>Maior</button>
+        <button onClick={menor} className='btn btn-default'>
+          <span>Menor</span>
+          <FontAwesomeIcon icon={faAngleDoubleDown} />
+        </button>
+        <button onClick={acertou} className='btn btn-default'>
+          <span>Acertou</span>
+          <FontAwesomeIcon icon={faThumbsUp} /></button>
+        <button onClick={maior} className='btn btn-default'>
+          <span>Maior</span>
+          <FontAwesomeIcon icon={faAngleDoubleUp} />
+        </button>
       </div>
     </div>
   );
